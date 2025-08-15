@@ -4,7 +4,7 @@ import testReducer from '../features/testSlice';
 
 const middlewares: Middleware[] = [];
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
     app: appReducer,
     test: testReducer,
@@ -12,6 +12,5 @@ const store = configureStore({
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(middlewares),
 });
 
-export default store;
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
