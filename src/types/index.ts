@@ -5,9 +5,3 @@ export type MenuItem = {
   module: string;
   icon: string;
 };
-
-export type DrawerParamList = {
-  Home: undefined;
-  BasicComponents: undefined;
-  // Add other screens here if any
-};

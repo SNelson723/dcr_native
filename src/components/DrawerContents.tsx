@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { DrawerContentScrollView } from '@react-navigation/drawer';
 import { useAppSelector } from '../hooks';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import * as Colors from '../styles/colors';
 
 const DrawerContents = ({ navigation }: any) => {
   const menuItems = useAppSelector(state => state.app.menuItems);
@@ -26,7 +27,7 @@ const DrawerContents = ({ navigation }: any) => {
       }}
     >
       <View style={styles.headerContainer}>
-        <Text>Drawer Contents</Text>
+        <Text style={styles.headerText}>Drawer Contents</Text>
       </View>
       <View>
         {menuItems.map(item => (
@@ -47,23 +48,25 @@ const DrawerContents = ({ navigation }: any) => {
 };
 
 const styles = StyleSheet.create({
-  // containerSettings: {
-  //   paddingTop: insets.top,
-  //   paddingBottom: insets.bottom,
-  //   paddingLeft: insets.left,
-  //   paddingRight: insets.right,
-  //   margin: 0,
-  // },
   headerContainer: {
-    backgroundColor: 'lightblue',
-    padding: 10,
+    paddingHorizontal: 16,
+    paddingVertical: 10,
     borderTopRightRadius: 15,
+    borderBottomWidth: 2,
+  },
+  headerText: {
+    fontSize: 25,
+    fontWeight: 'bold',
+    color: Colors.theme.primary,
   },
   menuItem: {
-    padding: 16,
+    paddingHorizontal: 16,
+    paddingVertical: 10,
   },
   menuText: {
-    fontSize: 16,
+    fontSize: 20,
+    color: 'black',
+    fontWeight: '500',
   },
   pressed: {
     backgroundColor: '#eee',

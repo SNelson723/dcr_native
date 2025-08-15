@@ -14,6 +14,12 @@ const Base = () => {
         initialRouteName="Home"
         backBehavior="history"
         drawerContent={drawerProps => <DrawerContents {...drawerProps} />}
+        screenOptions={{
+          drawerStyle: {
+            backgroundColor: 'white',
+            width: 240,
+          },
+        }}
       >
         <Drawer.Screen name="Home" component={HomeScreen} />
         <Drawer.Screen name="BasicComponents" component={BasicComponents} />
