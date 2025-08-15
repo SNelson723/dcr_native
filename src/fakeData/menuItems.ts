@@ -5,7 +5,7 @@ const menuItems: MenuItem[] = [
   {
     id: 2,
     label: 'Basic Components',
-    href: 'BasicComponents',
+    href: 'Components',
     module: 'BasicComponents',
     icon: '',
   },

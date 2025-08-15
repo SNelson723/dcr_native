@@ -22,7 +22,7 @@ const Base = () => {
         }}
       >
         <Drawer.Screen name="Home" component={HomeScreen} />
-        <Drawer.Screen name="BasicComponents" component={BasicComponents} />
+        <Drawer.Screen name="Components" component={BasicComponents} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
