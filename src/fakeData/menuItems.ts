@@ -9,6 +9,13 @@ const menuItems: MenuItem[] = [
     module: 'BasicComponents',
     icon: '',
   },
+  {
+    id: 3,
+    label: 'Form',
+    href: 'Form',
+    module: 'FormScreen',
+    icon: '',
+  },
 ];
 
 export default menuItems;

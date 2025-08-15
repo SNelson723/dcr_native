@@ -20,7 +20,7 @@ import { setText } from '../../features/basicCompSlice';
  * returnKeyType: 'done' | 'go' | 'next' | 'search' | 'send' | 'previous' | 'default'
  */
 
-const BasicComponents: React.FC = () => {
+const BasicComponents = () => {
   const basicCompState = useAppSelector(state => state.basicComp);
   const dispatch = useAppDispatch();
 

@@ -5,6 +5,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import DrawerContents from './components/DrawerContents';
 import HomeScreen from './screens/home/HomeScreen';
 import BasicComponents from './screens/basicComponents/BasicComponents';
+import FormScreen from './screens/form/Form';
 
 const Drawer = createDrawerNavigator();
 const Base = () => {
@@ -23,6 +24,7 @@ const Base = () => {
       >
         <Drawer.Screen name="Home" component={HomeScreen} />
         <Drawer.Screen name="Components" component={BasicComponents} />
+        <Drawer.Screen name="Form" component={FormScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
