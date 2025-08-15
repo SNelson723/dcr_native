@@ -1,13 +1,17 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import { MenuItem } from '../types';
+import menuItems from '../fakeData/menuItems';
 
 interface AppState {
   isLoading: boolean;
   error: string | null;
+  menuItems: MenuItem[];
 }
 
 const initialState: AppState = {
   isLoading: false,
   error: null,
+  menuItems: menuItems,
 };
 
 const appSlice = createSlice({
@@ -20,8 +24,11 @@ const appSlice = createSlice({
     setError: (state, action: PayloadAction<string | null>) => {
       state.error = action.payload;
     },
+    setMenuItems: (state, action: PayloadAction<MenuItem[]>) => {
+      state.menuItems = action.payload;
+    },
   },
 });
 
-export const { setLoading, setError } = appSlice.actions;
+export const { setLoading, setError, setMenuItems } = appSlice.actions;
 export default appSlice.reducer;
