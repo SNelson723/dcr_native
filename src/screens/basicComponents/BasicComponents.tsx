@@ -38,16 +38,16 @@ const BasicComponents: React.FC = () => {
       // showsVerticalScrollIndicator={false}
       // For the content inside the ScrollView
       // contentContainerStyle={{ justifyContent: 'center', alignItems: 'center' }}
-      >
+    >
       <View style={styles.container}>
+        <Text style={styles.title}>This is text. Below is a TextInput</Text>
         <TextInput
           style={styles.input}
           value={basicCompState.text}
           onChangeText={handleTextChange}
           secureTextEntry={false} // this is used for password fields
         />
-        <Image source={require('./cake.png')} style={styles.image} />
-        <Image source={require('./cake.png')} style={styles.image} />
+        <Text style={styles.title}>This screen can scroll because of ScrollView</Text>
         <Image source={require('./cake.png')} style={styles.image} />
         <Image source={require('./cake.png')} style={styles.image} />
         <Image source={require('./cake.png')} style={styles.image} />
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: 200,
-    height: 200,
+    height: 160,
     resizeMode: 'contain',
   },
   input: {
@@ -81,6 +81,8 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: 'bold',
+    textAlign: 'center',
+    paddingVertical: 10,
   },
 });
 
