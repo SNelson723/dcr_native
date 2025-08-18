@@ -10,7 +10,7 @@ interface AppState {
 }
 
 const initialState: AppState = {
-  url: 'http://127.0.0.1:5000/',
+  url: 'http://192.168.1.65:5000/', // need to use your local machine's IP address
   isLoading: false,
   error: null,
   menuItems: menuItems,
