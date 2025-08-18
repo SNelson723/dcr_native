@@ -3,12 +3,14 @@ import { MenuItem } from '../types';
 import menuItems from '../fakeData/menuItems';
 
 interface AppState {
+  url: string;
   isLoading: boolean;
   error: string | null;
   menuItems: MenuItem[];
 }
 
 const initialState: AppState = {
+  url: 'http://127.0.0.1:5000/',
   isLoading: false,
   error: null,
   menuItems: menuItems,

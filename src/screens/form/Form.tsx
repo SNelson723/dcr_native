@@ -1,16 +1,27 @@
 import React from 'react';
 import { View, Text, TextInput, Pressable, StyleSheet } from 'react-native';
 import { useAppSelector, useAppDispatch } from '../../hooks';
-import * as Colors from '../../styles/colors'
+import { setName, setEmail } from '../../features/formSlice';
+import * as Colors from '../../styles/colors';
+import { getForms, postForm } from '../../api/formApi';
 
 // See about hooking this up to your postgres database for backend practice
 const FormScreen = () => {
-  const [name, setName] = React.useState('');
-  const [email, setEmail] = React.useState('');
+  const context = useAppSelector(state => state.app);
+  const formState = useAppSelector(state => state.form);
+  const dispatch = useAppDispatch();
 
   const handleSubmit = () => {
     // Handle form submission logic here
-    console.log('Form submitted:', { name, email });
+    console.log('Form submitted:', formState);
+    postForm(context.url, formState.name, formState.email)
+      .then(resp => {
+        const j = resp.data;
+        console.log('Form submission response:', j);
+      })
+      .catch(err => {
+        console.error('Error submitting form:', err);
+      });
   };
 
   return (
@@ -19,14 +30,14 @@ const FormScreen = () => {
       <TextInput
         style={styles.input}
         placeholder="Name"
-        value={name}
-        onChangeText={setName}
+        value={formState.name}
+        onChangeText={text => dispatch(setName(text))}
       />
       <TextInput
         style={styles.input}
         placeholder="Email"
-        value={email}
-        onChangeText={setEmail}
+        value={formState.email}
+        onChangeText={text => dispatch(setEmail(text))}
       />
       <Pressable style={styles.button} onPress={handleSubmit}>
         <Text style={styles.buttonText}>Submit</Text>
