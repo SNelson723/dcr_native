@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 25,
     fontWeight: 'bold',
+    textAlign: 'center',
     color: Colors.theme.primary,
   },
   menuItem: {
