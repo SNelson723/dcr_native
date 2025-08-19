@@ -1,12 +1,14 @@
 import React from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { DrawerContentScrollView } from '@react-navigation/drawer';
-import { useAppSelector } from '../hooks';
+import { useAppSelector, useAppDispatch } from '../hooks';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { setToken, setLoggedIn } from '../features/appSlice';
 import * as Colors from '../styles/colors';
 
 const DrawerContents = ({ navigation }: any) => {
-  const menuItems = useAppSelector(state => state.app.menuItems);
+  const dispatch = useAppDispatch();
+  const context = useAppSelector(state => state.app);
   const insets = useSafeAreaInsets();
 
   const handleNavigation = (record: string, home: string) => {
@@ -16,21 +18,28 @@ const DrawerContents = ({ navigation }: any) => {
     });
   };
 
+  const handleLogout = () => {
+    // Clear user data and navigate to login screen
+    dispatch(setToken(''));
+    dispatch(setLoggedIn(false));
+    navigation.navigate('Login');
+  };
+
   return (
-    <DrawerContentScrollView
-      contentContainerStyle={{
-        paddingTop: insets.top,
-        paddingBottom: insets.bottom,
-        paddingLeft: insets.left,
-        paddingRight: insets.right,
-        margin: 0,
-      }}
-    >
-      <View style={styles.headerContainer}>
-        <Text style={styles.headerText}>Drawer Contents</Text>
-      </View>
-      <View>
-        {menuItems.map(item => (
+    <View style={{ flex: 1 }}>
+      <DrawerContentScrollView
+        contentContainerStyle={{
+          paddingTop: insets.top,
+          paddingBottom: insets.bottom,
+          paddingLeft: insets.left,
+          paddingRight: insets.right,
+          margin: 0,
+        }}
+      >
+        <View style={styles.headerContainer}>
+          <Text style={styles.headerText}>Drawer Contents</Text>
+        </View>
+        {context.menuItems.map(item => (
           <Pressable
             key={item.id}
             onPress={() => handleNavigation(item.href, item.module)}
@@ -42,8 +51,14 @@ const DrawerContents = ({ navigation }: any) => {
             <Text style={styles.menuText}>{item.label}</Text>
           </Pressable>
         ))}
-      </View>
-    </DrawerContentScrollView>
+      </DrawerContentScrollView>
+      <Pressable
+        style={{ paddingHorizontal: 20, height: 40 }}
+        onPress={handleLogout}
+      >
+        <Text style={styles.menuText}>Logout</Text>
+      </Pressable>
+    </View>
   );
 };
 

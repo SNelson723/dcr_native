@@ -18,7 +18,6 @@ const Login = () => {
     login(context.url, context.username, context.password)
       .then(resp => {
         const j = resp.data;
-        console.log('Login response:', j);
         dispatch(setToken(j.access_token));
         dispatch(setLoggedIn(true));
       })
